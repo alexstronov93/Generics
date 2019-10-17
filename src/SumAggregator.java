@@ -5,6 +5,9 @@ abstract class SumAggregator<T extends Number> implements Aggregator<T, T> {
             throw new IllegalArgumentException("Cant aggregate null");
         }
         int length = items.length;
+        if (length == 0) {
+            throw new IllegalArgumentException("Empty array");
+        }
         T sum = items[0];
         for (int i = 1; i < items.length; i++) {
             sum = sum(sum, items[i]);
