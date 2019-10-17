@@ -4,8 +4,8 @@ public class AvgAggregator implements Aggregator<Double, Number> {
         if (items == null) {
             throw new IllegalArgumentException("Cant aggregate null");
         }
-        int lenght = items.length;
-        if (lenght == 0) {
+        int length = items.length;
+        if (length == 0) {
             throw new IllegalArgumentException("Empty array");
         }
         double sum = 0;
@@ -14,6 +14,6 @@ public class AvgAggregator implements Aggregator<Double, Number> {
                 sum += num.doubleValue();
             }
         }
-        return sum / lenght;
+        return sum / length;
     }
 }
