@@ -1,12 +1,18 @@
-public class SumAggregator implements Aggregator<Integer, Integer> {
+abstract class SumAggregator<T extends Number> implements Aggregator<T, T> {
     @Override
-    public Integer aggregate(Integer[] items) {
-        int sum = 0;
-        for (Integer num : items) {
-            sum += num;
+    public T aggregate(T[] items) {
+        if (items == null) {
+            throw new IllegalArgumentException("Cant aggregate null");
+        }
+        int length = items.length;
+        T sum = items[0];
+        for (int i = 1; i < items.length; i++) {
+            sum = sum(sum, items[i]);
         }
         return sum;
     }
+
+    abstract T sum(T x, T y);
 
 }
 
